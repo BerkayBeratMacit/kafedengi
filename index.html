@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KafeDengi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #0e0e0e; color: #f1f1f1; }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 30px;
+      z-index: 1000;
+      backdrop-filter: blur(8px);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 50px;
+      margin-right: 12px;
+    }
+
+    .logo span {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 16px;
+      color: orange;
+      text-shadow: 2px 2px 0 black, 4px 4px 0 black;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #f5f5f5;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffcc80;
+    }
+
+    .hero {
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: black;
+    }
+
+    .hero video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .hero .content h2 {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 38px;
+      color: orange;
+      text-shadow: 2px 2px 0 black, 4px 4px 0 black;
+    }
+
+    .hero .content p {
+      font-size: 18px;
+      color: #eee;
+      margin-top: 16px;
+    }
+
+    section {
+      padding: 80px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    section h3 {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 24px;
+      margin-bottom: 30px;
+      color: orange;
+      text-align: center;
+      text-shadow: 2px 2px black;
+    }
+
+    .menu-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: center;
+    }
+
+    .menu-item {
+      background: #1e1e1e;
+      width: 240px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-item:hover {
+      transform: scale(1.05);
+    }
+
+    .menu-item img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .menu-item h4 {
+      margin: 10px 0 5px;
+      color: #ffcc80;
+    }
+
+    .menu-item p {
+      margin-bottom: 15px;
+      color: #ccc;
+      font-weight: bold;
+    }
+
+    footer {
+      padding: 40px;
+      text-align: center;
+      font-size: 14px;
+      color: #777;
+      background: #121212;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="logo.png" alt="KafeDengi Logo">
+    <span>KafeDengi</span>
+  </div>
+  <nav>
+    <a href="#menu">Menü</a>
+    <a href="#iletisim">İletişim</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <video autoplay muted loop playsinline>
+    <source src="hero-video.mp4" type="video/mp4">
+  </video>
+  <div class="overlay"></div>
+  <div class="content">
+    <h2>KAFEDENGİ</h2>
+    <p>Graffiti tarzında menünüzle tanışın</p>
+  </div>
+</section>
+
+<section id="menu" data-aos="fade-up">
+  <h3>MENÜ</h3>
+  <div class="menu-grid">
+    <div class="menu-item">
+      <img src="menu1.jpg" alt="Latte">
+      <h4>Latte</h4>
+      <p>45₺</p>
+    </div>
+    <div class="menu-item">
+      <img src="menu2.jpg" alt="Cheesecake">
+      <h4>Cheesecake</h4>
+      <p>55₺</p>
+    </div>
+    <div class="menu-item">
+      <img src="menu3.jpg" alt="Ice Americano">
+      <h4>Ice Americano</h4>
+      <p>40₺</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2025 KafeDengi | Tüm Hakları Saklıdır
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init();</script>
+</body>
+</html>
