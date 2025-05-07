@@ -1,188 +1,109 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KafeDengi</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KafeDengi</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', sans-serif; background: #fdf6ec; color: #3e2723; }
+    header { background: #795548; color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+    h1 { font-size: 24px; }
+    #menu-toggle { font-size: 26px; cursor: pointer; background: none; border: none; color: white; }
 
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: #fdf6ec;
-            color: #3e2723;
-        }
+    .sidebar {
+      position: fixed; top: 0; left: 0; width: 220px; height: 100%;
+      background: #a1887f; color: white; padding: 20px;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
 
-        header {
-            background: #795548;
-            color: white;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .sidebar.open { transform: translateX(0); }
+    .sidebar h2 { margin-bottom: 20px; font-size: 20px; }
+    .sidebar ul { list-style: none; }
+    .sidebar li { margin: 10px 0; cursor: pointer; }
 
-        h1 {
-            font-size: 24px;
-        }
+    .container { max-width: 800px; margin: auto; padding: 20px; }
 
-        #menu-toggle {
-            font-size: 26px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            color: white;
-        }
+    .category-title {
+      font-size: 20px;
+      margin: 30px 0 10px;
+      border-bottom: 2px solid #a1887f;
+      padding-bottom: 5px;
+    }
 
-        .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 220px;
-            height: 100%;
-            background: #a1887f;
-            color: white;
-            padding: 20px;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-            z-index: 1000;
-        }
+    .item {
+      display: flex; justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px dashed #ccc;
+    }
 
-            .sidebar.open {
-                transform: translateX(0);
-            }
+    .info-section {
+      margin-top: 20px;
+      background: #efebe9;
+      padding: 20px;
+      border-radius: 10px;
+    }
 
-            .sidebar h2 {
-                margin-bottom: 20px;
-                font-size: 20px;
-            }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
 
-            .sidebar ul {
-                list-style: none;
-            }
+    button {
+      background: #6d4c41;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
 
-            .sidebar li {
-                margin: 10px 0;
-                cursor: pointer;
-            }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #666;
+    }
 
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-        }
-
-        .item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px dashed #ccc;
-        }
-
-        .category-title {
-            font-size: 20px;
-            margin: 30px 0 10px;
-            border-bottom: 2px solid #a1887f;
-            padding-bottom: 5px;
-        }
-
-        .info-section {
-            margin-top: 50px;
-            background: #efebe9;
-            padding: 20px;
-            border-radius: 10px;
-        }
-
-            .info-section h2 {
-                font-size: 22px;
-                margin-bottom: 15px;
-            }
-
-        input, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-            font-size: 16px;
-        }
-
-        button {
-            background: #6d4c41;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 6px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            font-size: 14px;
-            color: #666;
-        }
-
-        @media (max-width: 480px) {
-            .item {
-                flex-direction: column;
-            }
-        }
-    </style>
+    @media (max-width: 480px) {
+      .item { flex-direction: column; }
+    }
+  </style>
 </head>
 <body>
 
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
-        <h2>Kategoriler</h2>
-        <ul id="category-list"></ul>
-    </div>
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <h2>Kategoriler</h2>
+    <ul id="category-list"></ul>
+  </div>
 
-    <!-- Header -->
-    <header>
-        <h1>KafeDengi</h1>
-        <button id="menu-toggle">&#9776;</button>
-    </header>
+  <!-- Header -->
+  <header>
+    <h1>KafeDengi</h1>
+    <button id="menu-toggle">&#9776;</button>
+  </header>
 
-    <!-- Ana İçerik -->
-    <div class="container">
-        <!-- Menü -->
-        <div id="menu-container"></div>
+  <!-- Ana İçerik -->
+  <div class="container" id="content-area"></div>
 
-        <!-- İletişim -->
-        <section class="info-section">
-            <h2>İletişim Bilgileri</h2>
-            <p><strong>Adres:</strong> Atatürk Cad. No:12, Kadıköy / İstanbul</p>
-            <p><strong>Telefon:</strong> 0555 555 55 55</p>
-            <p><strong>Email:</strong> iletisim@kafedengi.com</p>
-            <p><strong>Instagram:</strong> <a href="https://instagram.com/kafedengi" target="_blank">@kafedengi</a></p>
-        </section>
+  <footer>
+    © 2025 KafeDengi | Tüm Hakları Saklıdır
+  </footer>
 
-        <!-- Rezervasyon -->
-        <section class="info-section">
-            <h2>Rezervasyon Yap</h2>
-            <form>
-                <input type="text" placeholder="Adınız Soyadınız" required />
-                <input type="tel" placeholder="Telefon Numaranız" required />
-                <input type="date" required />
-                <input type="time" required />
-                <textarea placeholder="Ek bilgi (isteğe bağlı)"></textarea>
-                <button type="submit">Gönder</button>
-            </form>
-        </section>
-    </div>
+  <script>
+    const contentArea = document.getElementById("content-area");
+    const sidebar = document.getElementById("sidebar");
+    const menuToggle = document.getElementById("menu-toggle");
+    const categoryList = document.getElementById("category-list");
 
-    <footer>
-        © 2025 KafeDengi | Tüm Hakları Saklıdır
-    </footer>
-
-    <!-- JavaScript -->
-    <script>
     const menuData = {
       "Kahveler": [
         { ad: "Americano", fiyat: "40₺" },
@@ -200,48 +121,71 @@
       "Tostlar": [
         { ad: "Kaşarlı Tost", fiyat: "40₺" },
         { ad: "Sucuklu Tost", fiyat: "50₺" }
-      ]
+      ],
+      "İletişim": "iletisim",
+      "Rezervasyon": "rezervasyon"
     };
 
-    const sidebar = document.getElementById('sidebar');
-    const menuToggle = document.getElementById('menu-toggle');
-    const categoryList = document.getElementById('category-list');
-    const menuContainer = document.getElementById('menu-container');
-
-    // Menü aç/kapat
     menuToggle.onclick = () => {
       sidebar.classList.toggle('open');
     };
 
-    // Kategori listesini oluştur
     for (const kategori in menuData) {
       const li = document.createElement("li");
       li.textContent = kategori;
       li.onclick = () => {
-        displayCategory(kategori);
+        displayContent(kategori);
         sidebar.classList.remove("open");
       };
       categoryList.appendChild(li);
     }
 
-    // Seçilen kategoriyi göster
-    function displayCategory(categoryName) {
-      menuContainer.innerHTML = '';
-      const catTitle = document.createElement("div");
-      catTitle.className = "category-title";
-      catTitle.textContent = categoryName;
-      menuContainer.appendChild(catTitle);
+    function displayContent(kategori) {
+      contentArea.innerHTML = '';
 
-      menuData[categoryName].forEach(item => {
-        const itemElem = document.createElement("div");
-        itemElem.className = "item";
-        itemElem.innerHTML = `<span>${item.ad}</span><span>${item.fiyat}</span>`;
-        menuContainer.appendChild(itemElem);
-      });
+      if (typeof menuData[kategori] === "string") {
+        if (menuData[kategori] === "iletisim") {
+          contentArea.innerHTML = `
+            <div class="info-section">
+              <h2>İletişim Bilgileri</h2>
+              <p><strong>Adres:</strong> Atatürk Cad. No:12, Kadıköy / İstanbul</p>
+              <p><strong>Telefon:</strong> 0555 555 55 55</p>
+              <p><strong>Email:</strong> iletisim@kafedengi.com</p>
+              <p><strong>Instagram:</strong> <a href="https://instagram.com/kafedengi" target="_blank">@kafedengi</a></p>
+            </div>
+          `;
+        } else if (menuData[kategori] === "rezervasyon") {
+          contentArea.innerHTML = `
+            <div class="info-section">
+              <h2>Rezervasyon Yap</h2>
+              <form>
+                <input type="text" placeholder="Adınız Soyadınız" required />
+                <input type="tel" placeholder="Telefon Numaranız" required />
+                <input type="date" required />
+                <input type="time" required />
+                <textarea placeholder="Ek bilgi (isteğe bağlı)"></textarea>
+                <button type="submit">Gönder</button>
+              </form>
+            </div>
+          `;
+        }
+      } else {
+        const catTitle = document.createElement("div");
+        catTitle.className = "category-title";
+        catTitle.textContent = kategori;
+        contentArea.appendChild(catTitle);
+
+        menuData[kategori].forEach(item => {
+          const itemElem = document.createElement("div");
+          itemElem.className = "item";
+          itemElem.innerHTML = `<span>${item.ad}</span><span>${item.fiyat}</span>`;
+          contentArea.appendChild(itemElem);
+        });
+      }
     }
 
-    // Sayfa yüklendiğinde ilk kategori gösterilsin
-    displayCategory(Object.keys(menuData)[0]);
-    </script>
+    // Başlangıçta ilk kategoriyi göster
+    displayContent(Object.keys(menuData)[0]);
+  </script>
 </body>
 </html>
