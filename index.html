@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KafeDengi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fffaf5; color: #3e2723; line-height: 1.6; }
+
+    .hero {
+      height: 100vh;
+      background: url('hero.jpg') center center/cover no-repeat;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; color: white;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 60px;
+      margin-bottom: 20px;
+    }
+    .hero p { font-size: 20px; margin-bottom: 30px; }
+    .hero a {
+      background: white; color: #5d4037;
+      padding: 12px 30px; border-radius: 8px;
+      text-decoration: none; font-weight: bold;
+      transition: 0.3s;
+    }
+    .hero a:hover { background: #fce4ec; }
+
+    .section { padding: 60px 20px; max-width: 1000px; margin: auto; }
+    .section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px; margin-bottom: 30px; text-align: center;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+    .menu-item {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center; padding-bottom: 15px;
+    }
+    .menu-item img { width: 100%; height: 180px; object-fit: cover; }
+    .menu-item h3 { margin: 15px 0 5px; font-size: 20px; }
+    .menu-item p { color: #8d6e63; font-weight: bold; }
+
+    .about p {
+      font-size: 18px; max-width: 800px; margin: auto;
+      text-align: center; margin-bottom: 40px;
+    }
+
+    form {
+      display: flex; flex-direction: column; gap: 15px;
+      max-width: 500px; margin: auto;
+    }
+    input, textarea {
+      padding: 12px; font-size: 16px;
+      border-radius: 6px; border: 1px solid #ccc;
+    }
+    button {
+      padding: 14px; background: #6d4c41;
+      color: white; font-size: 16px;
+      border: none; border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <h1>KAFEDENGİ</h1>
+    <p>Lezzetin dengesi burada başlar.</p>
+    <a href="#menu">Menüyü Gör</a>
+  </section>
+
+  <section class="section" id="menu">
+    <h2>Menümüz</h2>
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="menu1.jpg" alt="Latte">
+        <h3>Latte</h3>
+        <p>45₺</p>
+      </div>
+      <div class="menu-item">
+        <img src="menu2.jpg" alt="Cheesecake">
+        <h3>Cheesecake</h3>
+        <p>55₺</p>
+      </div>
+      <div class="menu-item">
+        <img src="menu3.jpg" alt="Ice Americano">
+        <h3>Ice Americano</h3>
+        <p>40₺</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section about" id="hakkimizda">
+    <h2>Hakkımızda</h2>
+    <p>KafeDengi, kahve tutkusunu en dengeli tariflerle buluşturan modern bir kafe markasıdır. Her fincanda doğallığı, her dilimde lezzeti sunuyoruz.</p>
+    <img src="hakkimizda.jpg" style="width:100%; border-radius:12px; margin-top:20px;" alt="İç Mekan">
+  </section>
+
+  <section class="section" id="iletisim">
+    <h2>İletişim & Rezervasyon</h2>
+    <form>
+      <input type="text" placeholder="Adınız Soyadınız" required />
+      <input type="email" placeholder="E-posta" required />
+      <input type="tel" placeholder="Telefon Numaranız" required />
+      <textarea placeholder="Mesajınız / Rezervasyon Notu" rows="4"></textarea>
+      <button type="submit">Gönder</button>
+    </form>
+  </section>
+
+</body>
+</html>
