@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>KafeDengi</title>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #111; color: white; }
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 30px; background: #1a1a1a; position: relative;
+    }
+    nav {
+      display: flex;
+    }
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: white;
+    }
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .menu-toggle div {
+      width: 25px; height: 3px; background: white; margin: 4px 0;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: #111;
+        position: absolute;
+        top: 100%;
+        right: 20px;
+        width: 200px;
+        border-radius: 8px;
+        z-index: 1000;
+      }
+      nav a {
+        padding: 12px;
+        border-bottom: 1px solid #333;
+      }
+      nav.show {
+        display: flex;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="menu-toggle" id="toggleBtn">
+    <div></div><div></div><div></div>
+  </div>
+  <nav id="mainNav">
+    <a href="#menu">Menü</a>
+    <a href="#oyun">Oyun Salonu</a>
+    <a href="#rezervasyon">Rezervasyon</a>
+    <a href="#iletisim">İletişim</a>
+  </nav>
+</header>
+
+<section style="padding:60px; text-align:center;">
+  <h1>KafeDengi Test</h1>
+  <p>Hamburger menü mobilde düzgün çalışıyor.</p>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const toggle = document.getElementById("toggleBtn");
+  const nav = document.getElementById("mainNav");
+
+  toggle.addEventListener("click", function (e) {
+    e.stopPropagation();
+    nav.classList.toggle("show");
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+      nav.classList.remove("show");
+    }
+  });
+});
+</script>
+
+</body>
+</html>
