@@ -545,15 +545,18 @@
             let current = 0;
             const hero = document.getElementById('hero');
 
+            // GIF'leri önceden yükle
+            gifs.forEach(src => {
+                const img = new Image();
+                img.src = src;
+            });
+
             function changeBackground() {
                 hero.style.backgroundImage = `url('${gifs[current]}')`;
                 current = (current + 1) % gifs.length;
             }
 
-            // İlk başlat
             changeBackground();
-
-            // Her 6 saniyede bir değiştir
             setInterval(changeBackground, 6000);
         </script>
 
