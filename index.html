@@ -45,9 +45,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: url('hero.jpg') center/cover no-repeat;
-      text-align: center;
-    }
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: background-image 1s ease-in-out;
+      }
+    
     .hero h2 {
       font-family: 'Press Start 2P', cursive;
       font-size: 38px;
@@ -215,7 +218,7 @@
         </nav>
     </header>
 
-    <section class="hero">
+    <section class="hero" id="hero">
         <h2>KAFEDENGİ</h2>
     </section>
 
@@ -233,7 +236,7 @@
             <button onclick="filterMenu('fastfood')">Fastfood</button>
             <button onclick="filterMenu('nargile')">Nargile Çeşitleri</button>
         </div>
- 
+
 
         <div class="menu-grid" id="menuItems">
             <div class="menu-item kahve"><span class="kategori">Kahve</span><img src="menu1.jpg"><h4 style=" color:orange;">Latte</h4style="><p>110TL</p></div>
@@ -497,45 +500,62 @@
 
 
         </div>
-                <div style="display: flex; justify-content: center; align-items: center; gap: 10px; font-size: 13px; color: #888; margin-top: 40px; white-space: nowrap;">
-                    <span>© 2025</span>
-                    <span>KafeDengi</span>
-                    <span>|</span>
-                    <span>Tüm Hakları Saklıdır</span>
-                </div>
+        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; font-size: 13px; color: #888; margin-top: 40px; white-space: nowrap;">
+            <span>© 2025</span>
+            <span>KafeDengi</span>
+            <span>|</span>
+            <span>Tüm Hakları Saklıdır</span>
+        </div>
 
 
-                <script>
-                    function filterMenu(category) {
-                        const items = document.querySelectorAll('.menu-item');
-                        const buttons = document.querySelectorAll('.filters button');
-                        buttons.forEach(btn => btn.classList.remove('active'));
-                        event.target.classList.add('active');
-                        items.forEach(item => {
-                            if (category === 'all' || item.classList.contains(category)) {
-                                item.style.display = 'block';
-                            } else {
-                                item.style.display = 'none';
-                            }
-                        });
+        <script>
+            function filterMenu(category) {
+                const items = document.querySelectorAll('.menu-item');
+                const buttons = document.querySelectorAll('.filters button');
+                buttons.forEach(btn => btn.classList.remove('active'));
+                event.target.classList.add('active');
+                items.forEach(item => {
+                    if (category === 'all' || item.classList.contains(category)) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
                     }
-                </script>
+                });
+            }
+        </script>
 
 
 
-                <script>
-                    function toggleMenu() {
-                        const nav = document.getElementById("mainNav");
-                        nav.classList.toggle("show");
-                    }
-                    document.addEventListener("click", function (e) {
-                        const nav = document.getElementById("mainNav");
-                        const toggle = document.querySelector(".menu-toggle");
-                        if (!nav.contains(e.target) && !toggle.contains(e.target)) {
-                            nav.classList.remove("show");
-                        }
-                    });
-                </script>
+        <script>
+            function toggleMenu() {
+                const nav = document.getElementById("mainNav");
+                nav.classList.toggle("show");
+            }
+            document.addEventListener("click", function (e) {
+                const nav = document.getElementById("mainNav");
+                const toggle = document.querySelector(".menu-toggle");
+                if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+                    nav.classList.remove("show");
+                }
+            });
+        </script>
+
+        <script>
+            const gifs = ['bg1.gif', 'bg2.gif', 'bg3.gif'];
+            let current = 0;
+            const hero = document.getElementById('hero');
+
+            function changeBackground() {
+                hero.style.backgroundImage = `url('${gifs[current]}')`;
+                current = (current + 1) % gifs.length;
+            }
+
+            // İlk başlat
+            changeBackground();
+
+            // Her 6 saniyede bir değiştir
+            setInterval(changeBackground, 6000);
+        </script>
 
 
 </body>
