@@ -4,9 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>KafeDengi</title>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     <style>
+        @font-face {
+            font-family: 'Motorblock';
+            src: url('fonts/Motorblock.ttf') format('truetype');
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -44,7 +48,7 @@
             }
 
             .logo span {
-                font-family: 'Press Start 2P', cursive;
+                font-family: 'Motorblock', cursive;
                 font-size: 16px;
                 color: orange;
                 text-shadow: 2px 2px 0 black, 4px 4px 0 black;
@@ -90,7 +94,7 @@
         }
 
         .hero h2 {
-            font-family: 'Press Start 2P', cursive;
+            font-family: 'Motorblock', cursive;
             font-size: 38px;
             color: orange;
             text-shadow: 2px 2px 0 black, 4px 4px 0 black;
@@ -103,7 +107,7 @@
         }
 
             section h3 {
-                font-family: 'Press Start 2P', cursive;
+                font-family: 'Motorblock', cursive;
                 font-size: 22px;
                 margin-bottom: 30px;
                 color: orange;
@@ -606,21 +610,21 @@
             <script>
                 const contents = {
                     gizlilik: `
-                                                              <h3 style="color: orange;">Gizlilik Politikamiz</h3>
-                                                              <p>KafeDengi olarak, ziyaretcilerimizin gizliligine onem veriyoruz. Kullandiginiz bilgiler, yasal duzenlemelere uygun sekilde korunur ve ucuncu kisilerle paylasilmaz.</p>
-                                                            `,
+                                                                          <h3 style="color: orange;">Gizlilik Politikamiz</h3>
+                                                                          <p>KafeDengi olarak, ziyaretcilerimizin gizliligine onem veriyoruz. Kullandiginiz bilgiler, yasal duzenlemelere uygun sekilde korunur ve ucuncu kisilerle paylasilmaz.</p>
+                                                                        `,
                     kvkk: `
-                                                              <h3 style="color: orange;">KVKK Aydinlatma Metni</h3>
-                                                              <p>Kisi verileriniz, 6698 sayili KVKK kapsaminda islenmektedir. Detayli bilgi icin bizimle iletisime gecebilirsiniz.</p>
-                                                            `,
+                                                                          <h3 style="color: orange;">KVKK Aydinlatma Metni</h3>
+                                                                          <p>Kisi verileriniz, 6698 sayili KVKK kapsaminda islenmektedir. Detayli bilgi icin bizimle iletisime gecebilirsiniz.</p>
+                                                                        `,
                     iade: `
-                                                              <h3 style="color: orange;">Iade ve Iptal Politikasi</h3>
-                                                              <p>Satin aldiginiz urunleri 7 gun icinde iade edebilirsiniz. Iptal talepleri siparis islemi tamamlanmadan yapilmalidir.</p>
-                                                            `,
+                                                                          <h3 style="color: orange;">Iade ve Iptal Politikasi</h3>
+                                                                          <p>Satin aldiginiz urunleri 7 gun icinde iade edebilirsiniz. Iptal talepleri siparis islemi tamamlanmadan yapilmalidir.</p>
+                                                                        `,
                     mesafeli: `
-                                                              <h3 style="color: orange;">Mesafeli Satis Sozlesmesi</h3>
-                                                              <p>Web sitemizden yapilan her alisveris, Tuketici Haklari Kanunu cercevesinde yurutulmektedir.</p>
-                                                            `
+                                                                          <h3 style="color: orange;">Mesafeli Satis Sozlesmesi</h3>
+                                                                          <p>Web sitemizden yapilan her alisveris, Tuketici Haklari Kanunu cercevesinde yurutulmektedir.</p>
+                                                                        `
                 };
 
                 function openPopup(event, type) {
