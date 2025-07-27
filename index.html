@@ -193,27 +193,43 @@
   background: white;
   margin: 4px 0;
 }
-      html, body {
-          max-width: 100%;
-          overflow-x: hidden;
-      }
-
       @media (max-width: 768px) {
           .menu-grid {
               display: grid;
-              grid-template-columns: repeat(2, 1fr);
+              grid-template-columns: repeat(2, 1fr); /* 2x2 */
               gap: 16px;
-              justify-content: center;
-              padding: 0 16px;
+              justify-items: center; /* içerikleri ortala */
+              padding: 10px 16px;
           }
 
           .menu-item {
               width: 100%;
-              max-width: 160px;
+              max-width: 160px; /* mobilde her kutunun genişliği */
           }
 
-          footer {
-              padding: 30px 20px !important;
+          nav {
+              display: none;
+              flex-direction: column;
+              background: rgba(17, 17, 17, 0.9);
+              position: absolute;
+              top: 100%;
+              left: 20px;
+              width: 200px;
+              border-radius: 8px;
+              z-index: 1000;
+          }
+
+              nav a {
+                  padding: 12px;
+                  border-bottom: 1px solid #333;
+              }
+
+              nav.show {
+                  display: flex;
+              }
+
+          .menu-toggle {
+              display: flex;
           }
       }
 
