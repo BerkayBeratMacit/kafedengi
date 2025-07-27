@@ -216,11 +216,41 @@
     display: flex;
   }
 }
+      body {
+          margin: 0;
+          padding: 0;
+          overflow-x: hidden;
+          font-family: Arial, sans-serif;
+      }
+
+      .menu-grid {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 20px;
+          padding: 20px;
+      }
+
+      .menu-item {
+          width: 200px;
+          text-align: center;
+          background: #1a1a1a;
+          color: white;
+          border-radius: 10px;
+          padding: 15px;
+      }
+
+          .menu-item img {
+              width: 100%;
+              border-radius: 8px;
+          }
+
       @media (max-width: 768px) {
           .menu-grid {
               display: grid;
-              grid-template-columns: repeat(2, 1fr); /* 2 sütun */
+              grid-template-columns: repeat(2, 1fr); /* 2x2 */
               gap: 16px;
+              padding: 10px 16px;
               justify-items: center;
           }
 
