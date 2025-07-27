@@ -356,65 +356,47 @@
 
 
 
-            <!-- Sadece Kumpir kategorisinde görünecek liste -->
-            <div class="menu-item kumpir" style="width: 400px; margin: auto; text-align: center;">
-                <img src="kumpir.jpg" alt="Kumpir" style="width: 300px; border-radius: 8px; margin-bottom: 20px;">
-                <h4 style="font-size: 20px; margin-bottom: 10px; color: orange;">Malzemeler</h4>
-                <div style="display: flex; justify-content: space-evenly; gap: 20px; max-width: 600px; margin: auto;">
-                    <ul style="margin: 0; padding: 0 15px; list-style: disc; color: white; text-align: left;">
-                        <li>Tereyağ</li>
-                        <li>Siyah Zeytin</li>
-                        <li>Mısır</li>
-                        <li>Yeşil Zeytin</li>
-                        <li>Bezelye</li>
-                        <li>Kornişon Turşu</li>
-                        <li>Sosis</li>
+            <!-- KUMPIR & NARGILE ORTAK STILDE -->
 
-                    </ul>
-                    <ul style="margin: 0; padding: 0 15px; list-style: disc; color: white; text-align: left;">
-                        <li>Haydari</li>
-                        <li>Rus Salatası</li>
-                        <li>Kırmızı Lahana</li>
-                        <li>Jalapeno Biber</li>
-                        <li>Kaşar Peyniri</li>
-                        <li>Kısır</li>
-                        <li>Acılı Ezme</li>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 40px;">
 
+                <!-- KUMPIR -->
+                <div class="menu-item kumpir" style="width: 400px; background: #1c1c1c; border: 2px dashed orange; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.4);">
+                    <img src="kumpir.jpg" alt="Kumpir" style="width: 300px; border-radius: 8px; margin-bottom: 20px;">
+                    <h4 style="font-size: 20px; margin-bottom: 10px; color: orange;">Malzemeler</h4>
+                    <div style="display: flex; justify-content: space-evenly; gap: 20px; max-width: 100%; margin: auto;">
+                        <ul style="margin: 0; padding: 0 15px; list-style: disc; color: white; text-align: left;">
+                            <li>Tereyag</li>
+                            <li>Siyah Zeytin</li>
+                            <li>Misir</li>
+                            <li>Yesil Zeytin</li>
+                            <li>Bezelye</li>
+                            <li>Kornison Tursu</li>
+                            <li>Sosis</li>
+                        </ul>
+                        <ul style="margin: 0; padding: 0 15px; list-style: disc; color: white; text-align: left;">
+                            <li>Haydari</li>
+                            <li>Rus Salatasi</li>
+                            <li>Kirmizi Lahana</li>
+                            <li>Jalapeno Biber</li>
+                            <li>Kasar Peyniri</li>
+                            <li>Kisir</li>
+                            <li>Acli Ezme</li>
+                        </ul>
+                    </div>
+                </div>
 
-
+                <!-- NARGILE -->
+                <div class="menu-item nargile" style="width: 400px; background: #1c1c1c; border: 2px dashed orange; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.4);">
+                    <img src="nargile.jpg" alt="Nargile" style="width: 300px; border-radius: 8px; margin-bottom: 20px;">
+                    <h4 style="font-size: 20px; margin-bottom: 10px; color: orange;">Nargile Cesitleri</h4>
+                    <ul style="margin: 0 auto; padding: 0 15px; list-style: disc; color: white; text-align: left; max-width: 300px;">
+                        <li>Nargile cesitleri icin garson cagrin</li>
                     </ul>
                 </div>
+
             </div>
 
-            <!-- Nargile Çeşitleri kategorisinde görünecek liste -->
-            <div class="menu-item nargile" style="width: 400px; margin: auto; text-align: center;">
-                <img src="nargile.jpg" alt="Nargile" style="width: 300px; border-radius: 8px; margin-bottom: 20px;">
-                <h4 style="font-size: 20px; margin-bottom: 10px; color: orange;">Nargile Çeşitleri</h4>
-                <div style="display: flex; justify-content: space-evenly; gap: 20px; max-width: 600px; margin: auto;">
-                    <ul style="margin: 0; padding: 0 15px; list-style: disc; color: white; text-align: left;">
-                        <li>-</li>
-                        <li>-</li>
-                        <li>-</li>
-                        <li>-</li>
-                        <li>-</li>
-                        <li>-</li>
-                        <li>-</li>
-
-                    </ul>
-                    <ul style="margin: 0; padding: 0 15px; list-style: disc; color: white; text-align: left;">
-                        <li>-</li>
-                        <li>-</li>
-                        <li>-</li>
-                        <li>-</li>
-                        <li>-</li>
-                        <li>-</li>
-                        <li>-</li>
-
-
-
-                    </ul>
-                </div>
-            </div>
 
 
 
@@ -558,25 +540,25 @@
                         <span>© 2025</span>
                         <span>KafeDengi</span>
                         <span>|</span>
-                        <span>Tüm Hakları Saklıdır</span>
+                        <span>Tum Haklari Saklidir</span>
                     </div>
 
                     <!-- ALT MENÜ BAĞLANTILARI -->
                     <div style="margin-top: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-                        <a href="#" onclick="openPopup('gizlilik')" style="color: orange; text-decoration: none;">Gizlilik Politikamız</a>
-                        <a href="#" onclick="openPopup('kvkk')" style="color: orange; text-decoration: none;">KVKK Aydınlatma Metni</a>
-                        <a href="#" onclick="openPopup('iade')" style="color: orange; text-decoration: none;">İade ve İptal Politikaları</a>
-                        <a href="#" onclick="openPopup('mesafeli')" style="color: orange; text-decoration: none;">Mesafeli Satış Sözleşmesi</a>
+                        <a href="#" onclick="openPopup(event, 'gizlilik')" style="color: orange; text-decoration: none;">Gizlilik Politikamiz</a>
+                        <a href="#" onclick="openPopup(event, 'kvkk')" style="color: orange; text-decoration: none;">KVKK Aydinlatma Metni</a>
+                        <a href="#" onclick="openPopup(event, 'iade')" style="color: orange; text-decoration: none;">Iade ve Iptal Politikasi</a>
+                        <a href="#" onclick="openPopup(event, 'mesafeli')" style="color: orange; text-decoration: none;">Mesafeli Satis Sozlesmesi</a>
                     </div>
                 </div>
             </footer>
 
             <!-- POPUP MODAL -->
-            <div id="popupModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center; padding: 20px;">
+            <div id="popupModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center; padding: 20px; overflow-y: auto;">
                 <div style="background: #1e1e1e; max-width: 600px; width: 100%; padding: 30px; border-radius: 10px; color: white; position: relative;">
                     <button onclick="closePopup()" style="position: absolute; top: 10px; right: 15px; background: none; border: none; color: orange; font-size: 20px; cursor: pointer;">&times;</button>
                     <div id="popupContent">
-                        <!-- Dinamik içerik buraya gelecek -->
+                        <!-- Dinamik icerik buraya gelecek -->
                     </div>
                 </div>
             </div>
@@ -585,32 +567,35 @@
             <script>
                 const contents = {
                     gizlilik: `
-                  <h3 style="color: orange;">Gizlilik Politikamız</h3>
-                  <p>KafeDengi olarak, ziyaretçilerimizin gizliliğine önem veriyoruz. Kullandığınız bilgiler, yasal düzenlemelere uygun şekilde korunur ve üçüncü kişilerle paylaşılmaz.</p>
-                `,
+                              <h3 style="color: orange;">Gizlilik Politikamiz</h3>
+                              <p>KafeDengi olarak, ziyaretcilerimizin gizliligine onem veriyoruz. Kullandiginiz bilgiler, yasal duzenlemelere uygun sekilde korunur ve ucuncu kisilerle paylasilmaz.</p>
+                            `,
                     kvkk: `
-                  <h3 style="color: orange;">KVKK Aydınlatma Metni</h3>
-                  <p>Kisi verileriniz, 6698 sayılı KVKK kapsamında işlenmektedir. Detaylı bilgi için bizimle iletişime geçebilirsiniz.</p>
-                `,
+                              <h3 style="color: orange;">KVKK Aydinlatma Metni</h3>
+                              <p>Kisi verileriniz, 6698 sayili KVKK kapsaminda islenmektedir. Detayli bilgi icin bizimle iletisime gecebilirsiniz.</p>
+                            `,
                     iade: `
-                  <h3 style="color: orange;">İade ve İptal Politikaları</h3>
-                  <p>Satın aldığınız ürünleri 7 gün içerisinde iade edebilirsiniz. İptal talepleri sipariş işlemi tamamlanmadan yapılmalıdır.</p>
-                `,
+                              <h3 style="color: orange;">Iade ve Iptal Politikasi</h3>
+                              <p>Satin aldiginiz urunleri 7 gun icinde iade edebilirsiniz. Iptal talepleri siparis islemi tamamlanmadan yapilmalidir.</p>
+                            `,
                     mesafeli: `
-                  <h3 style="color: orange;">Mesafeli Satış Sözleşmesi</h3>
-                  <p>Web sitemizden yapılan her alışveriş, Tüketici Hakları Kanunu çerçevesinde yürütülmektedir.</p>
-                `
+                              <h3 style="color: orange;">Mesafeli Satis Sozlesmesi</h3>
+                              <p>Web sitemizden yapilan her alisveris, Tuketici Haklari Kanunu cercevesinde yurutulmektedir.</p>
+                            `
                 };
 
-                function openPopup(type) {
+                function openPopup(event, type) {
+                    event.preventDefault();
                     document.getElementById("popupContent").innerHTML = contents[type] || "";
-                    document.getElementById("popupModal").style.display = "flex";
+                    const modal = document.getElementById("popupModal");
+                    modal.style.display = "flex";
                 }
 
                 function closePopup() {
                     document.getElementById("popupModal").style.display = "none";
                 }
             </script>
+
 
 
 
