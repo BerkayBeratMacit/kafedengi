@@ -6,218 +6,239 @@
   <title>KafeDengi</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css"/>
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: #0e0e0e; color: #f1f1f1; }
+ <style>
+  * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: #0e0e0e; color: #f1f1f1; }
 
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: rgba(0,0,0,0.6);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 30px;
-      z-index: 1000;
-      backdrop-filter: blur(8px);
-    }
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 30px;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+  }
 
-    .logo { display: flex; align-items: center; }
-    .logo img { height: 50px; margin-right: 12px; }
-    .logo span {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 16px;
-      color: orange;
-      text-shadow: 2px 2px 0 black, 4px 4px 0 black;
-    }
+  .logo { display: flex; align-items: center; }
+  .logo img { height: 50px; margin-right: 12px; }
+  .logo span {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+    color: orange;
+    text-shadow: 2px 2px 0 black, 4px 4px 0 black;
+  }
 
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #f5f5f5;
-      transition: 0.3s;
-    }
-    nav a:hover { color: #ffcc80; }
+  nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #f5f5f5;
+    transition: 0.3s;
+  }
+  nav a:hover { color: #ffcc80; }
 
-      .hero {
-          position: relative;
-          width: 100%;
-          height: 100vh;
-          overflow: hidden;
-      }
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
 
-          .hero video {
-              position: absolute;
-              top: 0;
-              left: 0;
-              object-fit: cover;
-              width: 100%;
-              height: 100%;
-              z-index: -1;
-          }
+  .hero video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
 
-      .hero-content {
-          height: 100vh;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          background-size: cover;
-          background-position: center;
-          background-repeat: no-repeat;
-          transition: background-image 1s ease-in-out;
-      }
-    
-    .hero h2 {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 38px;
-      color: orange;
-      text-shadow: 2px 2px 0 black, 4px 4px 0 black;
-    }
+  .hero-content {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-image 1s ease-in-out;
+  }
 
-    section {
-      padding: 60px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
+  .hero h2 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 38px;
+    color: orange;
+    text-shadow: 2px 2px 0 black, 4px 4px 0 black;
+  }
 
-    section h3 {
-      font-family: 'Press Start 2P', cursive;
-      font-size: 22px;
-      margin-bottom: 30px;
-      color: orange;
-      text-align: center;
-      text-shadow: 2px 2px black;
-    }
+  section {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: auto;
+  }
 
-    .filters { text-align: center; margin: 30px 0; }
-    .filters button {
-      background: #222;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin: 5px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-    .filters button:hover, .filters button.active {
-      background: orange;
-      color: black;
-    }
+  section h3 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 22px;
+    margin-bottom: 30px;
+    color: orange;
+    text-align: center;
+    text-shadow: 2px 2px black;
+  }
 
-    .menu-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      justify-content: center;
-    }
+  .filters { text-align: center; margin: 30px 0; }
+  .filters button {
+    background: #222;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .filters button:hover, .filters button.active {
+    background: orange;
+    color: black;
+  }
 
-    .menu-item {
-      background: #1c1c1c;
-      border: 2px dashed orange;
-      border-radius: 12px;
-      overflow: hidden;
-      width: 260px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-      text-align: center;
-      transition: transform 0.3s;
-      position: relative;
-    }
-    .menu-item:hover { transform: scale(1.05); }
-    .menu-item img {
-      width: 100%;
-      height: 300px;
-      object-fit: cover;
-    }
-    .menu-item h4 { margin: 10px 0 5px; color: #ffd180; }
-    .menu-item p {
-      font-size: 14px;
-      color: #ccc;
-      margin: 0 10px 10px;
-    }
-    .menu-item .kategori {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: orange;
-      color: black;
-      padding: 4px 8px;
-      font-size: 12px;
-      border-radius: 4px;
-      font-weight: bold;
-    }
+  .menu-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+  }
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      max-width: 500px;
-      margin: auto;
-      margin-top: 20px;
-    }
-    input, textarea, select {
-      padding: 12px;
-      border-radius: 6px;
-      border: 1px solid #555;
-      background: #1e1e1e;
-      color: white;
-    }
-    button[type="submit"] {
-      background: orange;
-      color: black;
-      font-weight: bold;
-      border: none;
-      padding: 14px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
+  .menu-item {
+    background: #1c1c1c;
+    border: 2px dashed orange;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 260px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    text-align: center;
+    transition: transform 0.3s;
+    position: relative;
+  }
+  .menu-item:hover { transform: scale(1.05); }
 
-    footer {
-      padding: 40px;
-      text-align: center;
-      font-size: 14px;
-      color: #777;
-      background: #121212;
-    }
-  
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  margin-right: 20px;
-}
-.menu-toggle div {
-  width: 25px;
-  height: 3px;
-  background: white;
-  margin: 4px 0;
-}
-@media (max-width: 768px) {
-  nav {
+  .menu-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+
+  .menu-item h4 { margin: 10px 0 5px; color: #ffd180; }
+  .menu-item p {
+    font-size: 14px;
+    color: #ccc;
+    margin: 0 10px 10px;
+  }
+
+  .menu-item .kategori {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: orange;
+    color: black;
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  input, textarea, select {
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #555;
+    background: #1e1e1e;
+    color: white;
+  }
+
+  button[type="submit"] {
+    background: orange;
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  footer {
+    padding: 40px;
+    text-align: center;
+    font-size: 14px;
+    color: #777;
+    background: #121212;
+  }
+
+  .menu-toggle {
     display: none;
     flex-direction: column;
-    background: #111;
-    position: absolute;
-    top: 100%;
-    left: 20px;
-    width: 200px;
-    border-radius: 8px;
-    z-index: 1000;
+    cursor: pointer;
+    margin-right: 20px;
   }
-  nav a {
-    padding: 12px;
-    border-bottom: 1px solid #333;
+  .menu-toggle div {
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 4px 0;
   }
-  nav.show {
-    display: flex;
-  }
-  .menu-toggle {
-    display: flex;
-  }
-}
 
+  @media (max-width: 768px) {
+    nav {
+      display: none;
+      flex-direction: column;
+      background: #111;
+      position: absolute;
+      top: 100%;
+      left: 20px;
+      width: 200px;
+      border-radius: 8px;
+      z-index: 1000;
+    }
+    nav a {
+      padding: 12px;
+      border-bottom: 1px solid #333;
+    }
+    nav.show {
+      display: flex;
+    }
+    .menu-toggle {
+      display: flex;
+    }
+
+    /* Mobilde menü 2x2 olacak şekilde ayarlandı */
+    .menu-grid {
+      justify-content: center;
+      gap: 12px;
+      padding: 0 10px;
+    }
+    .menu-item {
+      width: 48%;
+      max-width: none;
+    }
+    .menu-item img {
+      height: auto;
+      object-fit: contain;
+    }
+  }
 </style>
+
 </head>
 <body>
 
