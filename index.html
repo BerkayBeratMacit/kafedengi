@@ -9,6 +9,7 @@
         @font-face {
             font-family: 'Motorblock';
             src: url('fonts/Motorblock.ttf') format('truetype');
+            font-display: swap;
         }
 
         * {
@@ -49,7 +50,7 @@
 
             .logo span {
                 font-family: 'Motorblock', cursive;
-                font-size: 16px;
+                font-size: clamp(14px, 3vw, 24px);
                 color: orange;
                 text-shadow: 2px 2px 0 black, 4px 4px 0 black;
             }
@@ -95,7 +96,7 @@
 
         .hero h2 {
             font-family: 'Motorblock', cursive;
-            font-size: 38px;
+            font-size: clamp(24px, 6vw, 42px);
             color: orange;
             text-shadow: 2px 2px 0 black, 4px 4px 0 black;
         }
@@ -108,7 +109,7 @@
 
             section h3 {
                 font-family: 'Motorblock', cursive;
-                font-size: 22px;
+                font-size: clamp(18px, 4vw, 30px);
                 margin-bottom: 30px;
                 color: orange;
                 text-align: center;
@@ -131,7 +132,8 @@
                 transition: 0.3s;
             }
 
-                .filters button:hover, .filters button.active {
+                .filters button:hover,
+                .filters button.active {
                     background: orange;
                     color: black;
                 }
@@ -263,7 +265,6 @@
                 display: flex;
             }
 
-            /* Mobilde menü 2x2 olacak şekilde ayarlandı */
             .menu-grid {
                 justify-content: center;
                 gap: 12px;
@@ -280,6 +281,7 @@
                     object-fit: contain;
                 }
         }
+
     </style>
 
 </head>
