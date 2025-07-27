@@ -216,7 +216,19 @@
     display: flex;
   }
 }
+      @media (max-width: 768px) {
+          .menu-grid {
+              display: grid;
+              grid-template-columns: repeat(2, 1fr); /* 2 sütun */
+              gap: 16px;
+              justify-items: center;
+          }
 
+          .menu-item {
+              width: 100%;
+              max-width: 160px;
+          }
+      }
 </style>
 </head>
 <body>
@@ -225,7 +237,7 @@
         <div class="menu-toggle" id="toggleBtn" onclick="toggleMenu()"><div></div><div></div><div></div></div>
         <div class="logo">
             <class alt="KAFEDENGİ Logo">
-            <span>KAFEDENGİ</span>
+            <span>KAFEDENGI</span>
         </div>
         <nav id="mainNav">
             <a href="#menu">Menü</a>
@@ -244,7 +256,7 @@
         </video>
         <div class="hero-content">
             <!-- Site başlık, buton vs buraya -->
-            <h2>KAFEDENGİ</h2>
+            <h2>KAFEDENGI</h2>
         </div>
     </div>
 
@@ -288,7 +300,7 @@
             <div class="menu-item sicakicecekler"><span class="kategori">Sıcak İçecekler</span><img src="menu1.jpg"><h4 style=" color:orange;">Sıcak Çikolata</h4style="><p>110TL</p></div>
             <div class="menu-item sogukicecekler"><span class="kategori">Soğuk İçecekler</span><img src="menu1.jpg"><h4 style=" color:orange;">Su</h4style="><p>110TL</p></div>
             <div class="menu-item sogukicecekler"><span class="kategori">Soğuk İçecekler</span><img src="menu1.jpg"><h4 style=" color:orange;">Sade Soda</h4style="><p>110TL</p></div>
-            <div class="menu-item sogukicecekler"><span class="kategori">Soğuk İçecekler</span><img src="menu1.jpg"><h4 style=" color:orange;">Meyveli Soda</h4>Freşha</h4style="><p>110TL</p></div>
+            <div class="menu-item sogukicecekler"><span class="kategori">Soğuk İçecekler</span><img src="menu1.jpg"><h4 style=" color:orange;">Meyveli Soda</h4>Freşa</h4style="><p>110TL</p></div>
             <div class="menu-item sogukicecekler"><span class="kategori">Soğuk İçecekler</span><img src="menu1.jpg"><h4 style=" color:orange;">Meyveli Soda</h4>Avşar</h4style="><p>110TL</p></div>
             <div class="menu-item sogukicecekler"><span class="kategori">Soğuk İçecekler</span><img src="menu1.jpg"><h4 style=" color:orange;">Kola</h4style="><p>110TL</p></div>
             <div class="menu-item sogukicecekler"><span class="kategori">Soğuk İçecekler</span><img src="menu1.jpg"><h4 style=" color:orange;">Gazoz</h4style="><p>110TL</p></div>
@@ -452,7 +464,7 @@
             <section id="iletisim">
                 <h3>İLETİŞİM</h3>
                 <div style="text-align:center;">
-                    📍 Şehit Murat Demir mah. Konuralp 355 sok no 3c, Düzce<br />
+                    📍 Şehit Murat Demir Mah. Konuralp 355 Sk No 3c, Düzce<br />
                     📞 0531 309 9462<br />
                     ✉️ kafe.dengi@outlook.com
                 </div>
@@ -465,7 +477,7 @@
                     <input type="email" placeholder="E-posta" required>
                     <input type="number" placeholder="Kişi Sayısı" required>
                     <input type="datetime-local" required>
-                    <textarea placeholder="Notunuz (isteğe bağlı)"></textarea>
+                    <textarea placeholder="Notunuz (İsteğe Bağlı)"></textarea>
                     <button type="submit">Rezervasyon Yap</button>
                 </form>
             </section>
@@ -508,7 +520,7 @@
                         <p style="color: #ccc; line-height: 1.8;">
                             kafe.dengi@outlook.com<br>
                             0531 309 9462<br>
-                            Şehit Murat Demir mah. Konuralp 355 sok no 3c, Düzce
+                            Şehit Murat Demir Mah. Konuralp 355 Sk No 3c, Düzce
                         </p>
                           </div>
 
