@@ -551,25 +551,67 @@
             </footer>
 
 
-            <div style="display: flex; flex-direction: column; align-items: center; gap: 10px; font-size: 13px; color: #888; margin-top: 40px; white-space: nowrap;">
-                <!-- Telif Satırı -->
-                <div style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap;">
-                    <span>© 2025</span>
-                    <span>KafeDengi</span>
-                    <span>|</span>
-                    <span>Tüm Hakları Saklıdır</span>
-                </div>
+            <!-- FOOTER -->
+            <footer style="background: #121212; padding: 40px 20px; color: #888; font-size: 14px; text-align: center;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                    <div style="display: flex; justify-content: center; align-items: center; gap: 10px; white-space: nowrap;">
+                        <span>© 2025</span>
+                        <span>KafeDengi</span>
+                        <span>|</span>
+                        <span>Tüm Hakları Saklıdır</span>
+                    </div>
 
-                <!-- Alt Menü Bağlantıları -->
-                <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; margin-top: 10px;">
-                    <a href="gizlilik-politikasi.html" target="_blank" style="color: #888; text-decoration: none;">Gizlilik Politikası</a>
-                    <a href="cerez-politikasi.html" target="_blank" style="color: #888; text-decoration: none;">Çerez Politikası</a>
-                    <a href="kullanim-sartlari.html" target="_blank" style="color: #888; text-decoration: none;">Kullanım Şartları</a>
-                    <a href="iletisim.html" target="_blank" style="color: #888; text-decoration: none;">İletişim</a>
-                    <a href="mesafeli-satis-sozlesmesi.html" target="_blank" style="color: #888; text-decoration: none;">Mesafeli Satış Sözleşmesi</a>
-                    <a href="iade-ve-degisim.html" target="_blank" style="color: #888; text-decoration: none;">İade ve Değişim Politikası</a>
+                    <!-- ALT MENÜ BAĞLANTILARI -->
+                    <div style="margin-top: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+                        <a href="#" onclick="openPopup('gizlilik')" style="color: orange; text-decoration: none;">Gizlilik Politikamız</a>
+                        <a href="#" onclick="openPopup('kvkk')" style="color: orange; text-decoration: none;">KVKK Aydınlatma Metni</a>
+                        <a href="#" onclick="openPopup('iade')" style="color: orange; text-decoration: none;">İade ve İptal Politikaları</a>
+                        <a href="#" onclick="openPopup('mesafeli')" style="color: orange; text-decoration: none;">Mesafeli Satış Sözleşmesi</a>
+                    </div>
+                </div>
+            </footer>
+
+            <!-- POPUP MODAL -->
+            <div id="popupModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center; padding: 20px;">
+                <div style="background: #1e1e1e; max-width: 600px; width: 100%; padding: 30px; border-radius: 10px; color: white; position: relative;">
+                    <button onclick="closePopup()" style="position: absolute; top: 10px; right: 15px; background: none; border: none; color: orange; font-size: 20px; cursor: pointer;">&times;</button>
+                    <div id="popupContent">
+                        <!-- Dinamik içerik buraya gelecek -->
+                    </div>
                 </div>
             </div>
+
+            <!-- POPUP SCRIPT -->
+            <script>
+                const contents = {
+                    gizlilik: `
+                  <h3 style="color: orange;">Gizlilik Politikamız</h3>
+                  <p>KafeDengi olarak, ziyaretçilerimizin gizliliğine önem veriyoruz. Kullandığınız bilgiler, yasal düzenlemelere uygun şekilde korunur ve üçüncü kişilerle paylaşılmaz.</p>
+                `,
+                    kvkk: `
+                  <h3 style="color: orange;">KVKK Aydınlatma Metni</h3>
+                  <p>Kisi verileriniz, 6698 sayılı KVKK kapsamında işlenmektedir. Detaylı bilgi için bizimle iletişime geçebilirsiniz.</p>
+                `,
+                    iade: `
+                  <h3 style="color: orange;">İade ve İptal Politikaları</h3>
+                  <p>Satın aldığınız ürünleri 7 gün içerisinde iade edebilirsiniz. İptal talepleri sipariş işlemi tamamlanmadan yapılmalıdır.</p>
+                `,
+                    mesafeli: `
+                  <h3 style="color: orange;">Mesafeli Satış Sözleşmesi</h3>
+                  <p>Web sitemizden yapılan her alışveriş, Tüketici Hakları Kanunu çerçevesinde yürütülmektedir.</p>
+                `
+                };
+
+                function openPopup(type) {
+                    document.getElementById("popupContent").innerHTML = contents[type] || "";
+                    document.getElementById("popupModal").style.display = "flex";
+                }
+
+                function closePopup() {
+                    document.getElementById("popupModal").style.display = "none";
+                }
+            </script>
+
 
 
 
