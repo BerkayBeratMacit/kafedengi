@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KafeDengi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0e0e0e;
+            color: #f1f1f1;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 30px;
+            z-index: 1000;
+            backdrop-filter: blur(8px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+            .logo img {
+                height: 50px;
+                margin-right: 12px;
+            }
+
+            .logo span {
+                font-family: 'Winky Rough', cursive;
+                font-size: 16px;
+                color: orange;
+                text-shadow: 2px 2px 0 black, 4px 4px 0 black;
+            }
+
+        nav a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #f5f5f5;
+            transition: 0.3s;
+            font-family: 'Winky Rough', cursive;
+        }
+
+            nav a:hover {
+                color: #ffcc80;
+            }
+
+        .hero {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+            .hero video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+
+            }
+
+        .hero-content {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: background-image 1s ease-in-out;
+        }
+
+        .hero h2 {
+            font-family: 'Winky Rough', cursive;
+            font-size: 38px;
+            color: orange;
+            text-shadow: 2px 2px 0 black, 4px 4px 0 black;
+        }
+
+        section {
+            padding: 60px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+            section h3 {
+                font-family: 'Winky Rough', cursive;
+                font-size: 22px;
+                margin-bottom: 30px;
+                color: orange;
+                text-align: center;
+                text-shadow: 2px 2px black;
+            }
+
+        .filters {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+            .filters button {
+                background: #222;
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                margin: 5px;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+                .filters button:hover, .filters button.active {
+                    background: orange;
+                    color: black;
+                }
+
+        .menu-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: center;
+        }
+
+        .menu-item {
+            background: #1c1c1c;
+            border: 2px dashed orange;
+            border-radius: 12px;
+            overflow: hidden;
+            width: 260px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            text-align: center;
+            transition: transform 0.3s;
+            position: relative;
+            
+        }
+
+            .menu-item:hover {
+                transform: scale(1.05);
+            }
+
+            .menu-item img {
+                width: 100%;
+                height: 300px;
+                object-fit: cover;
+            }
+
+            .menu-item h4 {
+                margin: 10px 0 5px;
+                color: #ffd180;
+                
+            }
+
+            .menu-item p {
+                font-size: 14px;
+                color: #ccc;
+                margin: 0 10px 10px;
+            }
+
+            .menu-item .kategori {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                background: orange;
+                color: black;
+                padding: 4px 8px;
+                font-size: 12px;
+                border-radius: 4px;
+                font-weight: bold;
+                
+            }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 500px;
+            margin: auto;
+            margin-top: 20px;
+        }
+
+        input, textarea, select {
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #555;
+            background: #1e1e1e;
+            color: white;
+        }
+
+        button[type="submit"] {
+            background: orange;
+            color: black;
+            font-weight: bold;
+            border: none;
+            padding: 14px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+            background: #121212;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+            .menu-toggle div {
+                width: 25px;
+                height: 3px;
+                background: white;
+                margin: 4px 0;
+            }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                flex-direction: column;
+                background: #111;
+                position: absolute;
+                top: 100%;
+                left: 20px;
+                width: 200px;
+                border-radius: 8px;
+                z-index: 1000;
+            }
+
+                nav a {
+                    padding: 12px;
+                    border-bottom: 1px solid #333;
+                }
+
+                nav.show {
+                    display: flex;
+                }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            /* Mobilde menü 2x2 olacak şekilde ayarlandı */
+            .menu-grid {
+                justify-content: center;
+                gap: 12px;
+                padding: 0 10px;
+            }
+
+            .menu-item {
+                width: 48%;
+                max-width: none;
+            }
+
+                .menu-item img {
+                    height: auto;
+                    object-fit: contain;
+                }
+        }
+    </style>
+
+</head>
+<body>
+
+    </head>
+    <body>
+
+        <header>
+            <div class="menu-toggle" id="toggleBtn" onclick="toggleMenu()"><div></div><div></div><div></div></div>
+            <div class="logo">
+                <class alt="KAFEDENGİ Logo">
+                    <span>KAFEDENGI</span>
+            </div>
+            <nav id="mainNav">
+                <a href="#menu">Menü</a>
+                <a href="#oyunsalonu">Oyun Salonu</a>
+                <a href="#iletisim">İletişim Ve Rezervasyon</a>
+            </nav>
+        </header>
+
+        <div class="hero">
+            <video id="video1" autoplay muted loop playsinline preload="auto" class="bg-video show">
+                <source src="bg1.mp4" type="video/mp4">
+            </video>
+            <video id="video2" autoplay muted loop playsinline preload="auto" class="bg-video">
+                <source src="bg2.mp4" type="video/mp4">
+            </video>
+            <video id="video3" autoplay muted loop playsinline preload="auto" class="bg-video">
+                <source src="bg3.mp4" type="video/mp4">
+            </video>
+
+            <div class="hero-content">
+                <h2>KAFEDENGI</h2>
+            </div>
+        </div>
+
+        <style>
+            .bg-video {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                z-index: -1;
+                opacity: 0;
+                transition: opacity 1s ease-in-out;
+            }
+
+                .bg-video.show {
+                    opacity: 1;
+                }
+        </style>
+
+
+        <section id="menu">
+            <h3>MENU</h3>
+            <div class="filters">
+                <button onclick="filterMenu('all')" class="active">Tümü</button>
+                <button onclick="filterMenu('kahve')">Kahveler</button>
+                <button onclick="filterMenu('sogukkahve')">Soğuk Kahveler</button>
+                <button onclick="filterMenu('sicakicecekler')">Sıcak İçecekler</button>
+                <button onclick="filterMenu('sogukicecekler')">Soğuk İçecekler</button>
+                <button onclick="filterMenu('tatli')">Tatlılar</button>
+                <button onclick="filterMenu('kumpir')">Kumpir</button>
+                <button onclick="filterMenu('atistirmalik')">Atıştırmalıklar</button>
+                <button onclick="filterMenu('fastfood')">Fastfood</button>
+                <button onclick="filterMenu('nargile')">Nargile Çeşitleri</button>
+            </div>
+
+
+            <div class="menu-grid" id="menuItems">
+                <div class="menu-item kahve"><span class="kategori">Kahve</span><img src="latte.jpg"><h4 style=" color:orange;">Latte</h4style="><p>110TL</p></div>
+                <div class="menu-item kahve"><span class="kategori">Kahve</span><img src="mocha.jpg"><h4 style=" color:orange;">Mocha</h4style="><p>110TL</p></div>
+                <div class="menu-item kahve"><span class="kategori">Kahve</span><img src="espresso.jpg"><h4 style=" color:orange;">Espresso</h4style="><p>110TL</p></div>
+                <div class="menu-item kahve"><span class="kategori">Kahve</span><img src="despresso.jpg"><h4 style=" color:orange;">Double Espresso</h4style="><p>110TL</p></div>
+                <div class="menu-item kahve"><span class="kategori">Kahve</span><img src="amerıcano.jpg"><h4 style=" color:orange;">Americano</h4style="><p>110TL</p></div>
+                <div class="menu-item kahve"><span class="kategori">Kahve</span><img src="cappucıno.jpg"><h4 style=" color:orange;">Cappucino</h4style="><p>110TL</p></div>
+                <div class="menu-item kahve"><span class="kategori">Kahve</span><img src="fkahve.jpg"><h4 style=" color:orange;">Filtre Kahve</h4style="><p>110TL</p></div>
+                <div class="menu-item kahve"><span class="kategori">Kahve</span><img src="kahve.jpg"><h4 style=" color:orange;">Türk Kahvesi</h4style="><p>110TL</p></div>
+                <div class="menu-item kahve"><span class="kategori">Kahve</span><img src="kahve.jpg"><h4 style=" color:orange;">Portakalı Türk Kahvesi</h4style="><p>110TL</p></div>
+                <div class="menu-item kahve"><span class="kategori">Kahve</span><img src="kahve.jpg"><h4 style=" color:orange;">Damla Sakızlı Türk Kahvesi</h4style="><p>110TL</p></div>
+                <div class="menu-item kahve"><span class="kategori">Kahve</span><img src="menengıc.jpg"><h4 style=" color:orange;">Menengiç</h4style="><p>110TL</p></div>
+                <div class="menu-item kahve"><span class="kategori">Kahve</span><img src="dıbek.jpg"><h4 style=" color:orange;">Dibek</h4style="><p>110TL</p></div>
+                <div class="menu-item sogukkahve"><span class="kategori">Soğuk Kahveler</span><img src="ıamerıcano.jpg"><h4 style=" color:orange;">İce Americano</h4style="><p>110TL</p></div>
+                <div class="menu-item sogukkahve"><span class="kategori">Soğuk Kahveler</span><img src="ılatte.jpg"><h4 style=" color:orange;">İce Latte</h4style="><p>110TL</p></div>
+                <div class="menu-item sogukkahve"><span class="kategori">Soğuk Kahveler</span><img src="ımocha.jpg"><h4 style=" color:orange;">İce Mocha</h4style="><p>110TL</p></div>
+                <div class="menu-item sogukkahve"><span class="kategori">Soğuk Kahveler</span><img src="ıfkahve.jpg"><h4 style=" color:orange;">İce Filtre Kahve</h4style="><p>110TL</p></div>
+                <div class="menu-item sicakicecekler"><span class="kategori">Sıcak İçecekler</span><img src="cay.jpg"><h4 style=" color:orange;">Çay</h4style="><p>110TL</p></div>
+                <div class="menu-item sicakicecekler"><span class="kategori">Sıcak İçecekler</span><img src="fcay.jpg"><h4 style=" color:orange;">Fincan Çay</h4style="><p>110TL</p></div>
+                <div class="menu-item sicakicecekler"><span class="kategori">Sıcak İçecekler</span><img src="bcay.jpg"><h4 style=" color:orange;">Meyve Ve Bitki Çayları</h4>Muz,Kuşburnu,Karadut,Oralet,Kivi,   Nane Limon,Ihlamur ve Yeşil Çay </h4style="><p>110TL</p></div>
+                <div class="menu-item sicakicecekler"><span class="kategori">Sıcak İçecekler</span><img src="salep.jpg"><h4 style=" color:orange;">Salep</h4style="><p>110TL</p></div>
+                <div class="menu-item sicakicecekler"><span class="kategori">Sıcak İçecekler</span><img src="sçikolata.jpg"><h4 style=" color:orange;">Sıcak Çikolata</h4style="><p>110TL</p></div>
+                <div class="menu-item sogukicecekler"><span class="kategori">Soğuk İçecekler</span><img src="su.jpg"><h4 style=" color:orange;">Su</h4style="><p>110TL</p></div>
+                <div class="menu-item sogukicecekler"><span class="kategori">Soğuk İçecekler</span><img src="soda.jpg"><h4 style=" color:orange;">Sade Soda</h4style="><p>110TL</p></div>
+                <div class="menu-item sogukicecekler"><span class="kategori">Soğuk İçecekler</span><img src="fresa.jpg"><h4 style=" color:orange;">Meyveli Soda</h4>Freşa</h4style="><p>110TL</p></div>
+                <div class="menu-item sogukicecekler"><span class="kategori">Soğuk İçecekler</span><img src="avsar.jpg"><h4 style=" color:orange;">Meyveli Soda</h4>Avşar</h4style="><p>110TL</p></div>
+                <div class="menu-item sogukicecekler"><span class="kategori">Soğuk İçecekler</span><img src="kola.jpg"><h4 style=" color:orange;">Kola</h4style="><p>110TL</p></div>
+                <div class="menu-item sogukicecekler"><span class="kategori">Soğuk İçecekler</span><img src="gazoz.jpg"><h4 style=" color:orange;">Gazoz</h4style="><p>110TL</p></div>
+                <div class="menu-item sogukicecekler"><span class="kategori">Soğuk İçecekler</span><img src="fanta.jpg"><h4 style=" color:orange;">Fanta</h4style="><p>110TL</p></div>
+                <div class="menu-item sogukicecekler"><span class="kategori">Soğuk İçecekler</span><img src="ıcetea.jpg"><h4 style=" color:orange;">İce Tea</h4style="><p>110TL</p></div>
+                <div class="menu-item sogukicecekler"><span class="kategori">Soğuk İçecekler</span><img src="msuyu.jpg"><h4 style=" color:orange;">Meyve Suyu</h4style="><p>110TL</p></div>
+                <div class="menu-item tatli"><span class="kategori">Tatlı</span><img src="tatlı.jpg"><h4 style=" color:orange;">Günün Tatlıları</h4style="><p>.</p></div>
+                <div class="menu-item atistirmalik"><span class="kategori">Atıştırmalık</span><img src="patates.jpg"><h4 style=" color:orange;">Patates Cipsi</h4><p>-</p></div>
+                <div class="menu-item atistirmalik"><span class="kategori">Atıştırmalık</span><img src="sogan.jpg"><h4 style=" color:orange;">Soğan Halkası</h4><p>-</p></div>
+                <div class="menu-item atistirmalik"><span class="kategori">Atıştırmalık</span><img src="nugget.jpg"><h4 style=" color:orange;">Nugget</h4><p>-</p></div>
+                <div class="menu-item atistirmalik"><span class="kategori">Atıştırmalık</span><img src="sbogrek.jpg"><h4 style=" color:orange;">Sigara Böreği</h4><p>-</p></div>
+                <div class="menu-item atistirmalik"><span class="kategori">Atıştırmalık</span><img src="csepetı.jpg"><h4 style=" color:orange;">Çıtır Sepeti</h4><p>Patates Cipsi,Soğan Halkası,Sigara Böreği ve Sosis  -</p></div>
+                <div class="menu-item atistirmalik"><span class="kategori">Atıştırmalık</span><img src="cerez.jpg"><h4 style=" color:orange;">Çerez Tabağı</h4><p>-</p></div>
+                <div class="menu-item atistirmalik"><span class="kategori">Atıştırmalık</span><img src="mısır.jpg"><h4 style=" color:orange;">Patlamış Mısır</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="mhamburger.jpg"><h4 style=" color:orange;">Hamburger Menü</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="mthamburger.jpg"><h4 style=" color:orange;">Tavuk Burger Menü</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="matost.jpg"><h4 style=" color:orange;">Ayvalık Tost Menü</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="mstost.jpg"><h4 style=" color:orange;">Sucuklu Tost Menü</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="mktost.jpg"><h4 style=" color:orange;">Kaşarlı Tost Menü</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="mkatost.jpg"><h4 style=" color:orange;">Karışık Tost Menü</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="mbstost.jpg"><h4 style=" color:orange;">Bazlama Sucuklu Tost Menü</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="mbktost.jpg"><h4 style=" color:orange;">Bazlama Kaşarlı Tost Menü</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="mbkatost.jpg"><h4 style=" color:orange;">Bazlama Karışık Tost Menü</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="myengen.jpg"><h4 style=" color:orange;">Yengen Menü</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="mkumru.jpg"><h4 style=" color:orange;">Kumru Menü</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="hamburger.jpg"><h4 style=" color:orange;">Hamburger</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="tavuk.jpg"><h4 style=" color:orange;">Tavuk Burger</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="ayvalık.jpg"><h4 style=" color:orange;">Ayvalık Tost</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="sucuklu.jpg"><h4 style=" color:orange;">Sucuklu Tost</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="kaşarlı.jpg"><h4 style=" color:orange;">Kaşarlı Tost</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="karışık.jpg"><h4 style=" color:orange;">Karışık Tost</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="sbazlama.jpg"><h4 style=" color:orange;">Bazlama Sucuklu Tost</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="kbazlama.jpg"><h4 style=" color:orange;">Bazlama Kaşarlı Tost</h4><p></p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="kabazlama.jpg"><h4 style=" color:orange;">Bazlama Karışık Tost</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="yengen.jpg"><h4 style=" color:orange;">Yengen</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="sosıslı.jpg"><h4 style=" color:orange;">Sosisli</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="patso.jpg"><h4 style=" color:orange;">Patso</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="spatso.jpg"><h4 style=" color:orange;">Sosisli Patso</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="kumru.jpg"><h4 style=" color:orange;">Kumru</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="pgozleme.jpg"><h4 style=" color:orange;">Peynirli Gözleme</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="pagozleme.jpg"><h4 style=" color:orange;">Patatesli Gözleme</h4><p>-</p></div>
+                <div class="menu-item fastfood"><span class="kategori">Fastfood</span><img src="kgozleme.jpg"><h4 style=" color:orange;">Kaşarlı Gözleme</h4><p>-</p></div>
+
+
+
+
+                <!-- KUMPIR & NARGILE ORTAK STILDE -->
+
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 40px;">
+
+                    <!-- KUMPIR -->
+                    <div class="menu-item kumpir" style="width: 400px; background: #1c1c1c; border: 2px dashed orange; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.4);">
+                        <img src="kumpir.jpg" alt="Kumpir" style="width: 300px; border-radius: 8px; margin-bottom: 20px;">
+                        <h4 style="font-size: 20px; margin-bottom: 10px; color: orange;">Malzemeler</h4>
+                        <div style="display: flex; justify-content: space-evenly; gap: 20px; max-width: 100%; margin: auto;">
+                            <ul style="margin: 0; padding: 0 15px; list-style: disc; color: white; text-align: left;">
+                                <li>Tereyag</li>
+                                <li>Siyah Zeytin</li>
+                                <li>Misir</li>
+                                <li>Yesil Zeytin</li>
+                                <li>Bezelye</li>
+                                <li>Kornison Tursu</li>
+                                <li>Sosis</li>
+                            </ul>
+                            <ul style="margin: 0; padding: 0 15px; list-style: disc; color: white; text-align: left;">
+                                <li>Haydari</li>
+                                <li>Rus Salatasi</li>
+                                <li>Kirmizi Lahana</li>
+                                <li>Jalapeno Biber</li>
+                                <li>Kasar Peyniri</li>
+                                <li>Kisir</li>
+                                <li>Acli Ezme</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- NARGILE -->
+                    <div class="menu-item nargile" style="width: 400px; background: #1c1c1c; border: 2px dashed orange; border-radius: 12px; padding: 20px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.4);">
+                        <img src="nargile.jpg" alt="Nargile" style="width: 300px; border-radius: 8px; margin-bottom: 20px;">
+                        <h4 style="font-size: 20px; margin-bottom: 10px; color: orange;">Nargile Cesitleri</h4>
+                        <ul style="margin: 0 auto; padding: 0 15px; list-style: disc; color: white; text-align: left; max-width: 300px;">
+                            <li>Nargile cesitleri icin garson cagrin</li>
+                        </ul>
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+                <section id="oyunsalonu" style="padding: 60px 20px; background: #141414; color: #f1f1f1; text-align: center;">
+                    <h3 style="font-family: 'Winky Rough', cursive; font-size: 22px; color: orange; text-shadow: 2px 2px black;">
+                        OYUN SALONUMUZ
+                    </h3>
+                    <p style="max-width: 700px; margin: 20px auto; font-size: 16px;">
+                        Arkadaşlarınızla keyifli zaman geçirebileceğiniz, kahvenizi yudumlarken oynayabileceğiniz masa oyunlarımız mevcuttur:
+                    </p>
+                    <div class="oyun-grid">
+                        <div class="oyun-kart"><img src="okey.jpg" alt="Okey"><h4>Okey</h4></div>
+                        <div class="oyun-kart"><img src="anlat.jpg" alt="Anlat Bakalım"><h4>Anlat Bakalım</h4></div>
+                        <div class="oyun-kart"><img src="tavla.jpg" alt="Tavla"><h4>Tavla</h4></div>
+                        <div class="oyun-kart"><img src="uno.jpg" alt="Uno"><h4>Uno</h4></div>
+                        <div class="oyun-kart"><img src="skip.jpg" alt="Skip-Bo"><h4>Skip-Bo</h4></div>
+                        <div class="oyun-kart"><img src="moodun.jpg" alt="Moodun Hangisi"><h4>Moodun Hangisi</h4></div>
+                        <div class="oyun-kart"><img src="monopoly.jpg" alt="Monopoly"><h4>Monopoly</h4></div>
+                        <div class="oyun-kart"><img src="iskambil.jpg" alt="İskambil"><h4>İskambil</h4></div>
+                    </div>
+                </section>
+
+                <style>
+                    .oyun-grid {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        gap: 20px;
+                        margin-top: 40px;
+                    }
+
+                    .oyun-kart {
+                        width: 180px;
+                        background: #222;
+                        padding: 15px;
+                        border-radius: 10px;
+                        text-align: center;
+                    }
+
+                        .oyun-kart img {
+                            width: 100%;
+                            height: 120px;
+                            object-fit: cover;
+                            border-radius: 6px;
+                        }
+
+                        .oyun-kart h4 {
+                            color: #ffd180;
+                            margin: 10px 0 5px;
+                            font-size: 16px;
+                        }
+
+                    @media (max-width: 768px) {
+                        .oyun-kart {
+                            width: 45%;
+                        }
+                    }
+                </style>
+
+                <section id="iletisim">
+                    <h3>ILETISIM VE REZERVASYON ICIN BIZE ULASIN</h3>
+                    <div style="text-align:center;">
+                        📍 Şehit Murat Demir Mah. Konuralp 355 Sk No 3c, Düzce<br />
+                        📞 0540 500 0181<br />
+                        ✉️ kafe.dengi@outlook.com
+                    </div>
+                </section>
+
+
+
+                <footer style="background: #1a1a1a; width: 100%; padding: 60px 40px; color: #f1f1f1;">
+                    <div style="
+    max-width: 1400px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 40px;
+  ">
+
+                        <div style="flex: 1 1 250px; min-width: 240px;">
+                            <h4 style="color: orange; font-size: 16px; margin-bottom: 15px;">ÇALIŞMA SAATLERİMİZ</h4>
+                            <ul style="list-style: none; padding: 0; line-height: 1.8; color: #ccc;">
+                                <li>PAZARTESİ — 09:00 - 02:00</li>
+                                <li>SALI — 09:00 - 02:00</li>
+                                <li>ÇARŞAMBA — 09:00 - 02:00</li>
+                                <li>PERŞEMBE — 09:00 - 02:00</li>
+                                <li>CUMA — 09:00 - 02:00</li>
+                                <li>CUMARTESİ — 09:00 - 02:00</li>
+                                <li>PAZAR — 09:00 - 02:00</li>
+                            </ul>
+                        </div>
+
+                        <div style="flex: 1 1 250px; min-width: 240px;">
+                            <h4 style="color: orange; font-size: 16px; margin-bottom: 15px;">SON MAKALELERİMİZ</h4>
+                            <ul style="list-style: none; padding: 0; line-height: 1.8;">
+                                <li><a href="#" style="color: #ccc; text-decoration: none;">Bir Fincan Kahve Hayatınızı Kurtarabilir</a></li>
+                                <li><a href="#" style="color: #ccc; text-decoration: none;">Kahvaltıda Kahve İçmenin Faydaları</a></li>
+                                <li><a href="#" style="color: #ccc; text-decoration: none;">Sabahları Kahve Zararlı mı?</a></li>
+                                <li><a href="#" style="color: #ccc; text-decoration: none;">Kahvenin Faydaları</a></li>
+                            </ul>
+                        </div>
+
+
+
+
+
+                    </div>
+                </footer>
+
+
+                <!-- FOOTER -->
+                <footer style="background: #121212; padding: 40px 20px; color: #888; font-size: 14px; text-align: center;">
+                    <div style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; white-space: nowrap;">
+                            <span>© 2025</span>
+                            <span>KafeDengi</span>
+                            <span>|</span>
+                            <span>Tum Haklari Saklidir</span>
+                        </div>
+
+                        <!-- ALT MENÜ BAĞLANTILARI -->
+                        <div style="margin-top: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+                            <a href="#" onclick="openPopup(event, 'gizlilik')" style="color: orange; text-decoration: none;">Gizlilik Politikamiz</a>
+                            <a href="#" onclick="openPopup(event, 'kvkk')" style="color: orange; text-decoration: none;">KVKK Aydinlatma Metni</a>
+                            <a href="#" onclick="openPopup(event, 'iade')" style="color: orange; text-decoration: none;">Iade ve Iptal Politikasi</a>
+                            <a href="#" onclick="openPopup(event, 'mesafeli')" style="color: orange; text-decoration: none;">Mesafeli Satis Sozlesmesi</a>
+                        </div>
+                    </div>
+                </footer>
+
+                <!-- POPUP MODAL -->
+                <div id="popupModal" style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center; padding: 20px; overflow-y: auto;">
+                    <div style="background: #1e1e1e; max-width: 600px; width: 100%; padding: 30px; border-radius: 10px; color: white; position: relative;">
+                        <button onclick="closePopup()" style="position: absolute; top: 10px; right: 15px; background: none; border: none; color: orange; font-size: 20px; cursor: pointer;">&times;</button>
+                        <div id="popupContent">
+                            <!-- Dinamik icerik buraya gelecek -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- POPUP SCRIPT -->
+                <script>
+                    const contents = {
+                        gizlilik: `
+                                                                                          <h3 style="color: orange;">Gizlilik Politikamiz</h3>
+                                                                                          <p>KafeDengi olarak, ziyaretcilerimizin gizliligine onem veriyoruz. Kullandiginiz bilgiler, yasal duzenlemelere uygun sekilde korunur ve ucuncu kisilerle paylasilmaz.</p>
+                                                                                        `,
+                        kvkk: `
+                                                                                          <h3 style="color: orange;">KVKK Aydinlatma Metni</h3>
+                                                                                          <p>Kisi verileriniz, 6698 sayili KVKK kapsaminda islenmektedir. Detayli bilgi icin bizimle iletisime gecebilirsiniz.</p>
+                                                                                        `,
+                        iade: `
+                                                                                          <h3 style="color: orange;">Iade ve Iptal Politikasi</h3>
+                                                                                          <p>Satin aldiginiz urunleri 7 gun icinde iade edebilirsiniz. Iptal talepleri siparis islemi tamamlanmadan yapilmalidir.</p>
+                                                                                        `,
+                        mesafeli: `
+                                                                                          <h3 style="color: orange;">Mesafeli Satis Sozlesmesi</h3>
+                                                                                          <p>Web sitemizden yapilan her alisveris, Tuketici Haklari Kanunu cercevesinde yurutulmektedir.</p>
+                                                                                        `
+                    };
+
+                    function openPopup(event, type) {
+                        event.preventDefault();
+                        document.getElementById("popupContent").innerHTML = contents[type] || "";
+                        const modal = document.getElementById("popupModal");
+                        modal.style.display = "flex";
+                    }
+
+                    function closePopup() {
+                        document.getElementById("popupModal").style.display = "none";
+                    }
+                </script>
+
+
+
+
+
+                <script>
+                    function filterMenu(category) {
+                        const items = document.querySelectorAll('.menu-item');
+                        const buttons = document.querySelectorAll('.filters button');
+                        buttons.forEach(btn => btn.classList.remove('active'));
+                        event.target.classList.add('active');
+                        items.forEach(item => {
+                            if (category === 'all' || item.classList.contains(category)) {
+                                item.style.display = 'block';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        });
+                    }
+                </script>
+
+
+
+                <script>
+                    function toggleMenu() {
+                        const nav = document.getElementById("mainNav");
+                        nav.classList.toggle("show");
+                    }
+                    document.addEventListener("click", function (e) {
+                        const nav = document.getElementById("mainNav");
+                        const toggle = document.querySelector(".menu-toggle");
+                        if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+                            nav.classList.remove("show");
+                        }
+                    });
+                </script>
+
+                <script>
+                    const videos = [
+                        document.getElementById('video1'),
+                        document.getElementById('video2'),
+                        document.getElementById('video3')
+                    ];
+
+                    let currentIndex = 0;
+
+                    setInterval(() => {
+                        const current = videos[currentIndex];
+                        current.classList.remove('show');
+
+                        currentIndex = (currentIndex + 1) % videos.length;
+                        const next = videos[currentIndex];
+                        next.classList.add('show');
+                    }, 3500);
+                </script>
+
+
+    </body>
+</html>
