@@ -3,55 +3,122 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KafeDengi | Hoş Geldiniz</title>
+
+    <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
-    <title>KafeDengi | Hoş Geldiniz</title>
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-3MNU3E5B6I40Mj+3sZPUSzlfBgOvJrH8U1eQp8+VqXf1sGb6z4syZ3dDDGduYz1Txp3YPyjeD/MvTCVY4h47xg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
-        body {
-            margin: 0;
+        * {
+            box-sizing: border-box;
             padding: 0;
-            background: url('arka.jpg') center center / cover no-repeat fixed;
+            margin: 0;
+        }
+
+        body {
+            background: url('images/arka.jpg') center center / cover no-repeat fixed;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
+            font-family: 'Winky Rough', cursive;
             color: white;
             text-shadow: 2px 2px 5px #000;
             backdrop-filter: blur(8px);
-
+            padding: 20px;
         }
 
         h1 {
-            font-family: 'Winky Rough', cursive;
             font-size: 50px;
             font-weight: bold;
-            text-align: center;
             letter-spacing: 3px;
             color: orange;
+            margin-bottom: 40px;
+            text-align: center;
         }
 
-        a {
-            font-family: 'Winky Rough', cursive;
-            margin-top: 30px;
-            padding: 15px 30px;
-            background: rgba(0,0,0,0.6);
-            color: orange;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 18px;
-            transition: background 0.3s ease;
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 40px;
+            width: 100%;
+            max-width: 300px;
         }
 
-            a:hover {
-                background: rgba(255,255,255,0.3);
-                color: #ffcc80;
+            .social-links a,
+            .enter-btn {
+                text-decoration: none;
+                text-align: left;
+                padding: 14px 20px;
+                font-size: 18px;
+                border-radius: 8px;
+                background: rgba(0, 0, 0, 0.6);
+                color: orange;
+                transition: all 0.3s ease;
+                border: 1px solid orange;
+                display: flex;
+                align-items: center;
+                gap: 12px;
             }
+
+                .social-links a i {
+                    font-size: 20px;
+                }
+
+                .social-links a:hover,
+                .enter-btn:hover {
+                    background: rgba(255, 255, 255, 0.2);
+                    color: #ffcc80;
+                }
+
+        .enter-btn {
+            margin-top: 10px;
+            font-weight: bold;
+            justify-content: center;
+        }
+
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            .social-links a,
+            .enter-btn {
+                font-size: 16px;
+                padding: 12px;
+            }
+
+                .social-links a i {
+                    font-size: 18px;
+                }
+        }
     </style>
 </head>
 <body>
-  <h1>KAFEDENGİ</h1>
-  <a href="main.html">Menüyü Gör</a>
+    <h1>KAFEDENGİ</h1>
+
+    <div class="social-links">
+        <a href="https://www.instagram.com/kafee.dengii?igsh=M3dnbXV2N3A3ODN1&utm_source=qr" target="_blank">
+            <img src="images/instagram.png" alt="Instagram" width="20" style="vertical-align: middle; margin-right: 10px;">
+            Instagram
+        </a>
+        <a href="https://www.facebook.com/share/19WBJvMAkq/?mibextid=wwXIfr" target="_blank">
+            <img src="images/facebook.png" alt="Facebook" width="20" style="vertical-align: middle; margin-right: 10px;">
+            Facebook
+        </a>
+        <a href="https://www.google.com/search?sca_esv=5f3e024f075fa025&hl=tr&gl=tr&sxsrf=AE3TifPN0Mt-Zw-yRwSMo9L92FFPzMLPpQ:1753818763437&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E9uuiX6TCsKzwG_krLxgA_WlKRUoWBooxb16S-9dnuqdMogfcZUV3o7EImqAuVRd3c6nAqeRqJ3HV-f12FWlt2tSiJin&q=KAFE+DENG%C4%B0+Yorumlar&sa=X&ved=2ahUKEwiDpZSD7OKOAxVLVfEDHbvFCLgQ0bkNegQIJxAD&biw=2560&bih=1279&dpr=1" target="_blank">
+            <img src="images/google.png" alt="Google" width="20" style="vertical-align: middle; margin-right: 10px;">
+            Google Yorumlar
+        </a>
+    </div>
+
+    <a href="main.html" class="enter-btn">Menüyü Gör</a>
 </body>
 </html>
